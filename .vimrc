@@ -1,5 +1,20 @@
-" setting
-" 文字コードをUFT-8に設定
+"---------------------------
+" Start Neobundle Settings.
+"---------------------------
+" bundleで管理するディレクトリを指定
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" neobundle自体をneobundleで管理
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" NERDTreeを設定
+NeoBundle 'scrooloose/nerdtree'
+
+NeoBundle 'Townk/vim-autoclose'
+
 set fenc=utf-8
 " バックアップファイルを作らない
 set nobackup
@@ -32,9 +47,17 @@ set showmatch
 set laststatus=2
 " コマンドラインの補完
 set wildmode=list:longest
+" メッセージ表示欄を２行確保
+set cmdheight=2
+" 対応する括弧を強調表示
+set showmatch
+" ヘルプを画面いっぱいに開く
+set helpheight=999
 " 折り返し時に表示行単位での移動できるようにする
 nnoremap j gj
 nnoremap k gk
+nnoremap :tree :NERDTreeToggle
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 
 " Tab系
@@ -58,5 +81,16 @@ set wrapscan
 " 検索語をハイライト表示
 set hlsearch
 " ESC連打でハイライト解除
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
+  nmap <Esc><Esc> :nohlsearch<CR><Esc>
+call neobundle#end()
 
+  " Required:
+  filetype plugin indent on
+
+  " 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
+  " 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
+  NeoBundleCheck
+
+  "-------------------------
+  " End Neobundle Settings.
+  "-------------------------
